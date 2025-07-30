@@ -5,37 +5,38 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class HttpBinApi implements ICredentialType {
-	name = 'httpbinApi';
-	displayName = 'HttpBin API';
-	documentationUrl = 'https://your-docs-url';
+export class VendusApi implements ICredentialType {
+	name = 'vendusApi';
+	displayName = 'Vendus API';
+	documentationUrl = 'https://www.vendus.co.ao/ws/v1.1/';
 	properties: INodeProperties[] = [
 		{
-			displayName: 'Token',
-			name: 'token',
+			displayName: 'API Key',
+			name: 'apiKey',
 			type: 'string',
 			default: '',
 			typeOptions: {
 				password: true,
-			}
+			},
+			required: true,
+			description: 'Your Vendus API key',
 		},
 		{
-			displayName: 'Domain',
-			name: 'domain',
+			displayName: 'Base URL',
+			name: 'baseUrl',
 			type: 'string',
-			default: 'https://httpbin.org',
+			default: 'https://www.vendus.co.ao/ws/v1.1',
+			description: 'The base URL for the Vendus API',
 		},
 	];
 
 	// This allows the credential to be used by other parts of n8n
 	// stating how this credential is injected as part of the request
-	// An example is the Http Request node that can make generic calls
-	// reusing this credential
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
 			headers: {
-				Authorization: '={{"Bearer " + $credentials.token}}',
+				Authorization: '=Basic {{Buffer.from($credentials.apiKey + ":").toString("base64")}}',
 			},
 		},
 	};
@@ -43,8 +44,8 @@ export class HttpBinApi implements ICredentialType {
 	// The block below tells how this credential can be tested
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: '={{$credentials?.domain}}',
-			url: '/bearer',
+			baseURL: '={{$credentials?.baseUrl}}',
+			url: '/account',
 		},
 	};
 }

@@ -1,48 +1,130 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# Vendus Node for n8n
 
-# n8n-nodes-starter
+> **Developed by [Pixel Infinito](https://pixel.ao)** - Empowering businesses with innovative automation solutions.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](https://n8n.io). It includes the node linter and other dependencies.
+This node provides integration with the Vendus API for invoicing and business management.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+## Features
 
-If you would like your node to be available on n8n cloud you can also [submit your node for verification](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/).
+- **Account Management**: Get and update account information
+- **Client Management**: Create, read, update, and delete clients
+- **Document Management**: Create and manage invoices, receipts, and other documents
+- **Product Management**: Manage products, categories, brands, and stock
+- **Receipt Management**: Handle receipts and payments
+- **Store Management**: Get store information
+- **Supplier Management**: Manage suppliers
 
-## Prerequisites
+## Authentication
 
-You need the following installed on your development machine:
+The node uses API key authentication. You need to:
 
-* [git](https://git-scm.com/downloads)
-* Node.js and npm. Minimum version Node 20. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  npm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+1. Get your API key from your Vendus account
+2. Configure the credentials in n8n
+3. Set the base URL (default: https://www.vendus.co.ao/ws/v1.1)
 
-## Using this starter
+## Resources
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+### Account
+- Get Account Info
+- Get Account by ID
+- Update Account
+- Get Account Users
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `npm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `npm run lint` to check for errors or `npm run lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+### Client
+- Get All Clients
+- Get Client by ID
+- Create Client
+- Update Client
+- Delete Client
+- Get Client Balance
+- Get Client Resume
 
-## More information
+### Document
+- Get All Documents
+- Get Document by ID
+- Create Document (Invoice, Receipt, etc.)
+- Update Document
+- Get Payment Methods
+- Create Payment Method
+- Get Document Types
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+### Product
+- Get All Products
+- Get Product by ID
+- Create Product
+- Update Product
+- Delete Product
+- Get Product Categories
+- Create Product Category
+- Get Product Brands
+- Create Product Brand
+- Get Product Stock
+- Update Product Stock
 
-## License
+### Receipt
+- Get All Receipts
+- Get Receipt by ID
+- Create Receipt
+- Update Receipt
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+### Store
+- Get All Stores
+- Get Store by ID
+
+### Supplier
+- Get All Suppliers
+- Get Supplier by ID
+- Create Supplier
+- Update Supplier
+
+## Usage Examples
+
+### Creating a Client
+1. Select "Client" as the resource
+2. Choose "Create Client" operation
+3. Fill in the required fields (Name, Fiscal ID)
+4. Optionally add additional information
+5. Use "Custom JSON" for advanced configurations
+
+### Creating an Invoice
+1. Select "Document" as the resource
+2. Choose "Create Document" operation
+3. Set the document type to "Invoice" (FT)
+4. Add client information
+5. Add items to the invoice
+6. Configure payment methods and due dates
+
+### Managing Products
+1. Select "Product" as the resource
+2. Choose the appropriate operation
+3. Fill in product details
+4. Configure pricing and stock information
+
+## Custom JSON
+
+For advanced users, each operation includes a "Custom JSON" field that allows you to override or extend the default payload with additional parameters not covered by the standard fields.
+
+## Error Handling
+
+The node includes comprehensive error handling and will return detailed error messages from the Vendus API when operations fail.
+
+## Rate Limiting
+
+The Vendus API includes rate limiting. The node respects these limits and will handle rate limit responses appropriately.
+
+## Support
+
+For issues with the Vendus API integration, please refer to the official Vendus API documentation: https://www.vendus.co.ao/ws/v1.1/
+
+## Credits
+
+**Developed by [Pixel Infinito](https://pixel.ao)**
+
+Pixel Infinito is a technology company specializing in business automation and digital transformation solutions. We help businesses streamline their operations through innovative software solutions and API integrations.
+
+- **Website**: https://pixel.ao
+- **Contact**: info@pixel.ao
+
+---
+
+*This n8n node is part of our commitment to providing high-quality automation tools for the business community.* 
