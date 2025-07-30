@@ -1,6 +1,6 @@
 {
   "name": "@pixelinfinito/n8n-nodes-vendus",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Vendus API integration for n8n - Invoicing and business management automation",
   "keywords": [
     "n8n-community-node-package",

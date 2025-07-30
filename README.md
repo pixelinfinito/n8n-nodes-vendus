@@ -16,11 +16,27 @@ This node provides integration with the Vendus API for invoicing and business ma
 
 ## Authentication
 
-The node uses API key authentication. You need to:
+The node uses Request Parameter authentication for the Vendus API:
 
+### Request Parameter Authentication
+- Sends your API key as a request parameter (`api_key`)
+- This is the recommended authentication method for simplicity and reliability
+
+### Setup Instructions
 1. Get your API key from your Vendus account
 2. Configure the credentials in n8n
 3. Set the base URL (default: https://www.vendus.co.ao/ws/v1.1)
+
+### Troubleshooting Authentication Issues
+
+If you encounter "Authorization failed - please check your credentials" errors:
+
+1. **Verify your API key**: Ensure your API key is correct and active
+2. **Check base URL**: Ensure the base URL is correct (https://www.vendus.co.ao/ws/v1.1)
+3. **Test with curl**: You can test your API key directly:
+   ```bash
+   curl https://www.vendus.co.ao/ws/v1.1/account?api_key=YOUR_API_KEY
+   ```
 
 ## Resources
 

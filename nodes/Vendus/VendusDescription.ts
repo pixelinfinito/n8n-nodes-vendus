@@ -38,6 +38,17 @@ export const vendusOperations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Get Account Users',
+				value: 'getAccountUsers',
+				action: 'Get account users',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/account/users',
+					},
+				},
+			},
+			{
 				name: 'Update Account',
 				value: 'updateAccount',
 				description: 'Update account information',
@@ -46,17 +57,6 @@ export const vendusOperations: INodeProperties[] = [
 					request: {
 						method: 'PATCH',
 						url: '/account/={{$parameter.accountId}}',
-					},
-				},
-			},
-			{
-				name: 'Get Account Users',
-				value: 'getAccountUsers',
-				action: 'Get account users',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/account/users',
 					},
 				},
 			},
@@ -75,28 +75,6 @@ export const vendusOperations: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Get All Clients',
-				value: 'getClients',
-				action: 'Get all clients',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/clients',
-					},
-				},
-			},
-			{
-				name: 'Get Client by ID',
-				value: 'getClientById',
-				action: 'Get client by ID',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/clients/={{$parameter.clientId}}',
-					},
-				},
-			},
-			{
 				name: 'Create Client',
 				value: 'createClient',
 				description: 'Create a new client',
@@ -105,18 +83,6 @@ export const vendusOperations: INodeProperties[] = [
 					request: {
 						method: 'POST',
 						url: '/clients',
-					},
-				},
-			},
-			{
-				name: 'Update Client',
-				value: 'updateClient',
-				description: 'Update client information',
-				action: 'Update client information',
-				routing: {
-					request: {
-						method: 'PATCH',
-						url: '/clients/={{$parameter.clientId}}',
 					},
 				},
 			},
@@ -133,6 +99,17 @@ export const vendusOperations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Get All Clients',
+				value: 'getClients',
+				action: 'Get all clients',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/clients',
+					},
+				},
+			},
+			{
 				name: 'Get Client Balance',
 				value: 'getClientBalance',
 				action: 'Get client balance',
@@ -144,6 +121,17 @@ export const vendusOperations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Get Client by ID',
+				value: 'getClientById',
+				action: 'Get client by ID',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/clients/={{$parameter.clientId}}',
+					},
+				},
+			},
+			{
 				name: 'Get Client Resume',
 				value: 'getClientResume',
 				action: 'Get client resume',
@@ -151,6 +139,18 @@ export const vendusOperations: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						url: '/clients/={{$parameter.clientId}}/resume',
+					},
+				},
+			},
+			{
+				name: 'Update Client',
+				value: 'updateClient',
+				description: 'Update client information',
+				action: 'Update client information',
+				routing: {
+					request: {
+						method: 'PATCH',
+						url: '/clients/={{$parameter.clientId}}',
 					},
 				},
 			},
@@ -168,6 +168,30 @@ export const vendusOperations: INodeProperties[] = [
 			},
 		},
 		options: [
+			{
+				name: 'Create Document',
+				value: 'createDocument',
+				description: 'Create a new document (invoice, receipt, etc.)',
+				action: 'Create a new document',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/documents',
+					},
+				},
+			},
+			{
+				name: 'Create Payment Method',
+				value: 'createPaymentMethod',
+				description: 'Create a new payment method',
+				action: 'Create a new payment method',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/documents/paymentmethods',
+					},
+				},
+			},
 			{
 				name: 'Get All Documents',
 				value: 'getDocuments',
@@ -191,26 +215,14 @@ export const vendusOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Create Document',
-				value: 'createDocument',
-				description: 'Create a new document (invoice, receipt, etc.)',
-				action: 'Create a new document',
+				name: 'Get Document Types',
+				value: 'getDocumentTypes',
+				description: 'Get available document types',
+				action: 'Get available document types',
 				routing: {
 					request: {
-						method: 'POST',
-						url: '/documents',
-					},
-				},
-			},
-			{
-				name: 'Update Document',
-				value: 'updateDocument',
-				description: 'Update document status',
-				action: 'Update document status',
-				routing: {
-					request: {
-						method: 'PATCH',
-						url: '/documents/={{$parameter.documentId}}',
+						method: 'GET',
+						url: '/documents/types',
 					},
 				},
 			},
@@ -227,26 +239,14 @@ export const vendusOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Create Payment Method',
-				value: 'createPaymentMethod',
-				description: 'Create a new payment method',
-				action: 'Create a new payment method',
+				name: 'Update Document',
+				value: 'updateDocument',
+				description: 'Update document status',
+				action: 'Update document status',
 				routing: {
 					request: {
-						method: 'POST',
-						url: '/documents/paymentmethods',
-					},
-				},
-			},
-			{
-				name: 'Get Document Types',
-				value: 'getDocumentTypes',
-				description: 'Get available document types',
-				action: 'Get available document types',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/documents/types',
+						method: 'PATCH',
+						url: '/documents/={{$parameter.documentId}}',
 					},
 				},
 			},
@@ -265,28 +265,6 @@ export const vendusOperations: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Get All Products',
-				value: 'getProducts',
-				action: 'Get all products',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/products',
-					},
-				},
-			},
-			{
-				name: 'Get Product by ID',
-				value: 'getProductById',
-				action: 'Get product by ID',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/products/={{$parameter.productId}}',
-					},
-				},
-			},
-			{
 				name: 'Create Product',
 				value: 'createProduct',
 				description: 'Create a new product',
@@ -295,64 +273,6 @@ export const vendusOperations: INodeProperties[] = [
 					request: {
 						method: 'POST',
 						url: '/products',
-					},
-				},
-			},
-			{
-				name: 'Update Product',
-				value: 'updateProduct',
-				description: 'Update product information',
-				action: 'Update product information',
-				routing: {
-					request: {
-						method: 'PATCH',
-						url: '/products/={{$parameter.productId}}',
-					},
-				},
-			},
-			{
-				name: 'Delete Product',
-				value: 'deleteProduct',
-				description: 'Delete a product',
-				action: 'Delete a product',
-				routing: {
-					request: {
-						method: 'DELETE',
-						url: '/products/={{$parameter.productId}}',
-					},
-				},
-			},
-			{
-				name: 'Get Product Categories',
-				value: 'getProductCategories',
-				action: 'Get product categories',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/products/categories',
-					},
-				},
-			},
-			{
-				name: 'Create Product Category',
-				value: 'createProductCategory',
-				description: 'Create a new product category',
-				action: 'Create a new product category',
-				routing: {
-					request: {
-						method: 'POST',
-						url: '/products/categories',
-					},
-				},
-			},
-			{
-				name: 'Get Product Brands',
-				value: 'getProductBrands',
-				action: 'Get product brands',
-				routing: {
-					request: {
-						method: 'GET',
-						url: '/products/brands',
 					},
 				},
 			},
@@ -369,6 +289,74 @@ export const vendusOperations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Create Product Category',
+				value: 'createProductCategory',
+				description: 'Create a new product category',
+				action: 'Create a new product category',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/products/categories',
+					},
+				},
+			},
+			{
+				name: 'Delete Product',
+				value: 'deleteProduct',
+				description: 'Delete a product',
+				action: 'Delete a product',
+				routing: {
+					request: {
+						method: 'DELETE',
+						url: '/products/={{$parameter.productId}}',
+					},
+				},
+			},
+			{
+				name: 'Get All Products',
+				value: 'getProducts',
+				action: 'Get all products',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/products',
+					},
+				},
+			},
+			{
+				name: 'Get Product Brands',
+				value: 'getProductBrands',
+				action: 'Get product brands',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/products/brands',
+					},
+				},
+			},
+			{
+				name: 'Get Product by ID',
+				value: 'getProductById',
+				action: 'Get product by ID',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/products/={{$parameter.productId}}',
+					},
+				},
+			},
+			{
+				name: 'Get Product Categories',
+				value: 'getProductCategories',
+				action: 'Get product categories',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/products/categories',
+					},
+				},
+			},
+			{
 				name: 'Get Product Stock',
 				value: 'getProductStock',
 				description: 'Get product stock information',
@@ -377,6 +365,18 @@ export const vendusOperations: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						url: '/products/stocks/={{$parameter.productId}}',
+					},
+				},
+			},
+			{
+				name: 'Update Product',
+				value: 'updateProduct',
+				description: 'Update product information',
+				action: 'Update product information',
+				routing: {
+					request: {
+						method: 'PATCH',
+						url: '/products/={{$parameter.productId}}',
 					},
 				},
 			},
@@ -406,6 +406,18 @@ export const vendusOperations: INodeProperties[] = [
 		},
 		options: [
 			{
+				name: 'Create Receipt',
+				value: 'createReceipt',
+				description: 'Create a new receipt',
+				action: 'Create a new receipt',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/receipts',
+					},
+				},
+			},
+			{
 				name: 'Get All Receipts',
 				value: 'getReceipts',
 				action: 'Get all receipts',
@@ -424,18 +436,6 @@ export const vendusOperations: INodeProperties[] = [
 					request: {
 						method: 'GET',
 						url: '/receipts/={{$parameter.receiptId}}',
-					},
-				},
-			},
-			{
-				name: 'Create Receipt',
-				value: 'createReceipt',
-				description: 'Create a new receipt',
-				action: 'Create a new receipt',
-				routing: {
-					request: {
-						method: 'POST',
-						url: '/receipts',
 					},
 				},
 			},
@@ -502,6 +502,18 @@ export const vendusOperations: INodeProperties[] = [
 		},
 		options: [
 			{
+				name: 'Create Supplier',
+				value: 'createSupplier',
+				description: 'Create a new supplier',
+				action: 'Create a new supplier',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/suppliers',
+					},
+				},
+			},
+			{
 				name: 'Get All Suppliers',
 				value: 'getSuppliers',
 				action: 'Get all suppliers',
@@ -524,18 +536,6 @@ export const vendusOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Create Supplier',
-				value: 'createSupplier',
-				description: 'Create a new supplier',
-				action: 'Create a new supplier',
-				routing: {
-					request: {
-						method: 'POST',
-						url: '/suppliers',
-					},
-				},
-			},
-			{
 				name: 'Update Supplier',
 				value: 'updateSupplier',
 				description: 'Update supplier information',
@@ -552,11 +552,15 @@ export const vendusOperations: INodeProperties[] = [
 	},
 ];
 
-// Fields for all operations
+// Fields for all operations - OPTIMIZED VERSION
 export const vendusFields: INodeProperties[] = [
-	// Account operations
+	// ================================
+	// ACCOUNT OPERATIONS
+	// ================================
+
+	// Required Fields for Account Operations
 	{
-		displayName: 'Account ID',
+		displayName: 'Account Name or ID',
 		name: 'accountId',
 		type: 'string',
 		default: '',
@@ -567,228 +571,187 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['getAccountById', 'updateAccount'],
 			},
 		},
-		description: 'The ID of the account',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
+
+	// Optional Account Fields Section
 	{
-		displayName: 'Store ID',
-		name: 'storeId',
-		type: 'string',
-		default: '',
+		displayName: 'Additional Options',
+		name: 'additionalOptions',
+		type: 'collection',
+		placeholder: 'Add Option',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['account'],
 				operation: ['getAccountUsers'],
 			},
 		},
-		description: 'Filter users by store ID',
-	},
-	{
-		displayName: 'Exclude Accountants',
-		name: 'excludeAccountants',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['getAccountUsers'],
-			},
-		},
-		description: 'Exclude accountants from results',
-	},
-	{
-		displayName: 'Company',
-		name: 'company',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-		description: 'Company name',
-	},
-	{
-		displayName: 'Address',
-		name: 'address',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-		description: 'Company address',
-	},
-	{
-		displayName: 'Postal Code',
-		name: 'postalCode',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-	},
-	{
-		displayName: 'City',
-		name: 'city',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-	},
-	{
-		displayName: 'Tax ID',
-		name: 'taxId',
-		type: 'options',
 		options: [
-			{ name: 'Normal Rate', value: 'NOR' },
-			{ name: 'Intermediate Rate', value: 'INT' },
-			{ name: 'Reduced Rate', value: 'RED' },
-			{ name: 'Exempt', value: 'ISE' },
-			{ name: 'Others', value: 'OUT' },
+			{
+				displayName: 'Store Name or ID',
+				name: 'storeId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getStores',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Whether to Exclude Accountants',
+				name: 'excludeAccountants',
+				type: 'boolean',
+				default: false,
+			},
 		],
-		default: 'NOR',
+	},
+
+	// Account Update Fields
+	{
+		displayName: 'Update Fields',
+		name: 'updateFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['account'],
 				operation: ['updateAccount'],
 			},
 		},
-		description: 'Default tax rate',
-	},
-	{
-		displayName: 'Tax Exemption',
-		name: 'taxExemption',
-		type: 'options',
 		options: [
-			{ name: 'M01 - Article 16.6 CIVA', value: 'M01' },
-			{ name: 'M02 - Decree-Law 198/90', value: 'M02' },
-			{ name: 'M04 - Article 13 CIVA', value: 'M04' },
-			{ name: 'M05 - Article 14 CIVA', value: 'M05' },
-			{ name: 'M06 - Article 15 CIVA', value: 'M06' },
-			{ name: 'M07 - Article 9 CIVA', value: 'M07' },
-			{ name: 'M10 - VAT Exemption Regime', value: 'M10' },
-			{ name: 'M11 - Tobacco Special Regime', value: 'M11' },
-			{ name: 'M12 - Travel Agencies Margin', value: 'M12' },
-			{ name: 'M13 - Second-Hand Goods Margin', value: 'M13' },
-			{ name: 'M14 - Art Objects Margin', value: 'M14' },
-			{ name: 'M15 - Collection Objects Margin', value: 'M15' },
-			{ name: 'M16 - Article 14 RITI', value: 'M16' },
-			{ name: 'M19 - Other Exemptions', value: 'M19' },
-			{ name: 'M20 - VAT Forfeiture Regime', value: 'M20' },
-			{ name: 'M21 - VAT No Deduction Right', value: 'M21' },
-			{ name: 'M25 - Consignment Goods', value: 'M25' },
-			{ name: 'M26 - Food Basket (Expired)', value: 'M26' },
-			{ name: 'M30 - VAT Self-Liquidation (2.1.i)', value: 'M30' },
-			{ name: 'M31 - VAT Self-Liquidation (2.1.j)', value: 'M31' },
-			{ name: 'M32 - VAT Self-Liquidation (2.1.l)', value: 'M32' },
-			{ name: 'M33 - VAT Self-Liquidation (2.1.m)', value: 'M33' },
-			{ name: 'M34 - VAT Self-Liquidation (2.1.n)', value: 'M34' },
-			{ name: 'M40 - VAT Self-Liquidation (6.6.a)', value: 'M40' },
-			{ name: 'M41 - VAT Self-Liquidation (8.3.R)', value: 'M41' },
-			{ name: 'M42 - VAT Self-Liquidation (21.2007)', value: 'M42' },
-			{ name: 'M43 - VAT Self-Liquidation (362.99)', value: 'M43' },
-			{ name: 'M99 - Not Subject/Not Taxed', value: 'M99' },
+			{
+				displayName: 'Address',
+				name: 'address',
+				type: 'string',
+				default: '',
+				description: 'Company address',
+			},
+			{
+				displayName: 'City',
+				name: 'city',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Company',
+				name: 'company',
+				type: 'string',
+				default: '',
+				description: 'Company name',
+			},
+			{
+				displayName: 'Conservatory',
+				name: 'conservatory',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Country',
+				name: 'country',
+				type: 'options',
+				options: [
+					{ name: 'Angola', value: 'AO' },
+					{ name: 'Portugal', value: 'PT' },
+					{ name: 'Portugal - Azores', value: 'PT-AC' },
+					{ name: 'Portugal - Madeira', value: 'PT-MA' },
+				],
+				default: 'PT',
+			},
+			{
+				displayName: 'Fiscal ID',
+				name: 'fiscalId',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Phone',
+				name: 'phone',
+				type: 'string',
+				default: '',
+				description: 'Phone number',
+			},
+			{
+				displayName: 'Postal Code',
+				name: 'postalCode',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Social Capital',
+				name: 'socialCapital',
+				type: 'string',
+				default: '',
+				description: 'Company Social Capital',
+			},
+			{
+				displayName: 'Tax Exemption',
+				name: 'taxExemption',
+				type: 'options',
+				options: [
+					{ name: 'M01 - Article 16.6 CIVA', value: 'M01' },
+					{ name: 'M02 - Decree-Law 198/90', value: 'M02' },
+					{ name: 'M04 - Article 13 CIVA', value: 'M04' },
+					{ name: 'M05 - Article 14 CIVA', value: 'M05' },
+					{ name: 'M06 - Article 15 CIVA', value: 'M06' },
+					{ name: 'M07 - Article 9 CIVA', value: 'M07' },
+					{ name: 'M10 - VAT Exemption Regime', value: 'M10' },
+					{ name: 'M11 - Tobacco Special Regime', value: 'M11' },
+					{ name: 'M12 - Travel Agencies Margin', value: 'M12' },
+					{ name: 'M13 - Second-Hand Goods Margin', value: 'M13' },
+					{ name: 'M14 - Art Objects Margin', value: 'M14' },
+					{ name: 'M15 - Collection Objects Margin', value: 'M15' },
+					{ name: 'M16 - Article 14 RITI', value: 'M16' },
+					{ name: 'M19 - Other Exemptions', value: 'M19' },
+					{ name: 'M20 - VAT Forfeiture Regime', value: 'M20' },
+					{ name: 'M21 - VAT No Deduction Right', value: 'M21' },
+					{ name: 'M25 - Consignment Goods', value: 'M25' },
+					{ name: 'M26 - Food Basket (Expired)', value: 'M26' },
+					{ name: 'M30 - VAT Self-Liquidation (2.1.i)', value: 'M30' },
+					{ name: 'M31 - VAT Self-Liquidation (2.1.j)', value: 'M31' },
+					{ name: 'M32 - VAT Self-Liquidation (2.1.l)', value: 'M32' },
+					{ name: 'M33 - VAT Self-Liquidation (2.1.m)', value: 'M33' },
+					{ name: 'M34 - VAT Self-Liquidation (2.1.n)', value: 'M34' },
+					{ name: 'M40 - VAT Self-Liquidation (6.6.a)', value: 'M40' },
+					{ name: 'M41 - VAT Self-Liquidation (8.3.R)', value: 'M41' },
+					{ name: 'M42 - VAT Self-Liquidation (21.2007)', value: 'M42' },
+					{ name: 'M43 - VAT Self-Liquidation (362.99)', value: 'M43' },
+					{ name: 'M99 - Not Subject/Not Taxed', value: 'M99' },
+				],
+				default: 'M40',
+				description: 'Tax exemption reason',
+			},
+			{
+				displayName: 'Tax Exemption Law',
+				name: 'taxExemptionLaw',
+				type: 'string',
+				default: '',
+				displayOptions: {
+					show: {
+						'/updateFields.taxExemption': ['M01', 'M02', 'M04', 'M05', 'M06', 'M07', 'M10', 'M11', 'M12', 'M13', 'M14', 'M15', 'M16', 'M19', 'M20', 'M21', 'M25', 'M26', 'M30', 'M31', 'M32', 'M33', 'M34', 'M41', 'M42', 'M43', 'M99'],
+					},
+				},
+				description: 'Tax exemption applicable law (required when exemption is not M40)',
+			},
+			{
+				displayName: 'Tax ID',
+				name: 'taxId',
+				type: 'options',
+				options: [
+					{ name: 'Exempt', value: 'ISE' },
+					{ name: 'Intermediate Rate', value: 'INT' },
+					{ name: 'Normal Rate', value: 'NOR' },
+					{ name: 'Others', value: 'OUT' },
+					{ name: 'Reduced Rate', value: 'RED' },
+				],
+				default: 'NOR',
+				description: 'Default tax rate',
+			},
 		],
-		default: 'M40',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-		description: 'Tax exemption reason',
 	},
-	{
-		displayName: 'Tax Exemption Law',
-		name: 'taxExemptionLaw',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-		description: 'Tax exemption applicable law',
-	},
-	{
-		displayName: 'Fiscal ID',
-		name: 'fiscalId',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-	},
-	{
-		displayName: 'Phone',
-		name: 'phone',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-		description: 'Phone number',
-	},
-	{
-		displayName: 'Conservatory',
-		name: 'conservatory',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-	},
-	{
-		displayName: 'Social Capital',
-		name: 'socialCapital',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-		description: 'Company Social Capital',
-	},
-	{
-		displayName: 'Country',
-		name: 'country',
-		type: 'options',
-		options: [
-			{ name: 'Angola', value: 'AO' },
-			{ name: 'Portugal', value: 'PT' },
-			{ name: 'Portugal - Azores', value: 'PT-AC' },
-			{ name: 'Portugal - Madeira', value: 'PT-MA' },
-		],
-		default: 'PT',
-		displayOptions: {
-			show: {
-				resource: ['account'],
-				operation: ['updateAccount'],
-			},
-		},
-	},
+
+	// Custom JSON for Account
 	{
 		displayName: 'Custom JSON',
 		name: 'customJson',
@@ -800,12 +763,15 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['updateAccount'],
 			},
 		},
-		description: 'Custom JSON payload to override default fields',
 	},
 
-	// Client operations
+	// ================================
+	// CLIENT OPERATIONS - OPTIMIZED
+	// ================================
+
+	// Required Fields for Client Operations
 	{
-		displayName: 'Client ID',
+		displayName: 'Client Name or ID',
 		name: 'clientId',
 		type: 'string',
 		default: '',
@@ -816,36 +782,12 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['getClientById', 'updateClient', 'deleteClient', 'getClientBalance', 'getClientResume'],
 			},
 		},
-		description: 'The ID of the client',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
+
+	// Required: Client Name for Create/Update
 	{
-		displayName: 'Search Query',
-		name: 'q',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['getClients'],
-			},
-		},
-		description: 'Search string for clients',
-	},
-	{
-		displayName: 'Fiscal ID',
-		name: 'fiscalId',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['getClients', 'createClient', 'updateClient'],
-			},
-		},
-		description: 'Fiscal ID of the client',
-	},
-	{
-		displayName: 'Name',
+		displayName: 'Client Name',
 		name: 'name',
 		type: 'string',
 		default: '',
@@ -856,230 +798,254 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['createClient', 'updateClient'],
 			},
 		},
-		description: 'Client name',
 	},
+
+	// Optional Client Search and Filter Options
 	{
-		displayName: 'Address',
-		name: 'address',
-		type: 'string',
-		default: '',
+		displayName: 'Search & Filter Options',
+		name: 'searchOptions',
+		type: 'collection',
+		placeholder: 'Add Filter',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
+				operation: ['getClients'],
 			},
 		},
-		description: 'Client address',
-	},
-	{
-		displayName: 'Postal Code',
-		name: 'postalcode',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
-			},
-		},
-	},
-	{
-		displayName: 'City',
-		name: 'city',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
-			},
-		},
-	},
-	{
-		displayName: 'Phone',
-		name: 'phone',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
-			},
-		},
-		description: 'Phone number',
-	},
-	{
-		displayName: 'Mobile',
-		name: 'mobile',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
-			},
-		},
-		description: 'Mobile number',
-	},
-	{
-		displayName: 'Email',
-		name: 'email',
-		type: 'string',
-		placeholder: 'name@email.com',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
-			},
-		},
-		description: 'Email address',
-	},
-	{
-		displayName: 'Website',
-		name: 'website',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
-			},
-		},
-		description: 'Website URL',
-	},
-	{
-		displayName: 'Country',
-		name: 'country',
-		type: 'options',
 		options: [
-			{ name: 'Portugal', value: 'PT' },
-			{ name: 'Spain', value: 'ES' },
-			{ name: 'France', value: 'FR' },
-			{ name: 'Angola', value: 'AO' },
+			{
+				displayName: 'Fiscal ID',
+				name: 'fiscalId',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Search Query',
+				name: 'q',
+				type: 'string',
+				default: '',
+				description: 'Search string for clients',
+			},
 		],
-		default: 'PT',
+	},
+
+	// Client Contact Information
+	{
+		displayName: 'Contact Information',
+		name: 'contactInfo',
+		type: 'collection',
+		placeholder: 'Add Contact Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['client'],
 				operation: ['createClient', 'updateClient'],
 			},
 		},
-		description: 'Country code using ISO 3166-1 alpha-2',
+		options: [
+			{
+				displayName: 'Email',
+				name: 'email',
+				type: 'string',
+				placeholder: 'name@email.com',
+				default: '',
+				description: 'Email address',
+			},
+			{
+				displayName: 'Fiscal ID',
+				name: 'fiscalId',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Mobile',
+				name: 'mobile',
+				type: 'string',
+				default: '',
+				description: 'Mobile number',
+			},
+			{
+				displayName: 'Phone',
+				name: 'phone',
+				type: 'string',
+				default: '',
+				description: 'Phone number',
+			},
+			{
+				displayName: 'Website',
+				name: 'website',
+				type: 'string',
+				default: '',
+				description: 'Website URL',
+			},
+		],
 	},
+
+	// Client Address Information
 	{
-		displayName: 'External Reference',
-		name: 'externalReference',
-		type: 'string',
-		default: '',
+		displayName: 'Address Information',
+		name: 'addressInfo',
+		type: 'collection',
+		placeholder: 'Add Address Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['client'],
 				operation: ['createClient', 'updateClient'],
 			},
 		},
-	},
-	{
-		displayName: 'Notes',
-		name: 'notes',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient', 'updateClient'],
+		options: [
+			{
+				displayName: 'Address',
+				name: 'address',
+				type: 'string',
+				default: '',
+				description: 'Client address',
 			},
-		},
-		description: 'Notes about the client',
+			{
+				displayName: 'City',
+				name: 'city',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Country',
+				name: 'country',
+				type: 'options',
+				options: [
+					{ name: 'Angola', value: 'AO' },
+					{ name: 'France', value: 'FR' },
+					{ name: 'Portugal', value: 'PT' },
+					{ name: 'Spain', value: 'ES' },
+				],
+				default: 'PT',
+				description: 'Country code using ISO 3166-1 alpha-2',
+			},
+			{
+				displayName: 'Postal Code',
+				name: 'postalcode',
+				type: 'string',
+				default: '',
+			},
+		],
 	},
+
+	// Client Business Settings
 	{
-		displayName: 'Price Group ID',
-		name: 'priceGroupId',
-		type: 'number',
-		default: '',
+		displayName: 'Business Settings',
+		name: 'businessSettings',
+		type: 'collection',
+		placeholder: 'Add Business Setting',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['client'],
 				operation: ['createClient'],
 			},
 		},
-	},
-	{
-		displayName: 'Send Email',
-		name: 'sendEmail',
-		type: 'options',
 		options: [
-			{ name: 'Yes', value: 'yes' },
-			{ name: 'No', value: 'no' },
+			{
+				displayName: 'Default Pay Due',
+				name: 'defaultPayDue',
+				type: 'options',
+				options: [
+					{ name: '1 Day', value: '1' },
+					{ name: '7 Days', value: '7' },
+					{ name: '15 Days', value: '15' },
+					{ name: '30 Days', value: '30' },
+					{ name: '45 Days', value: '45' },
+					{ name: '60 Days', value: '60' },
+					{ name: '90 Days', value: '90' },
+					{ name: 'Now', value: 'now' },
+				],
+				default: '15',
+				description: 'Default payment due period',
+			},
+			{
+				displayName: 'IRS Retention',
+				name: 'irsRetention',
+				type: 'options',
+				options: [
+					{ name: 'No', value: 'no' },
+					{ name: 'Yes', value: 'yes' },
+				],
+				default: 'no',
+				description: 'Whether client does IRS retention',
+			},
+			{
+				displayName: 'Price Group Name or ID',
+				name: 'priceGroupId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getPriceGroups',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Send Email',
+				name: 'sendEmail',
+				type: 'options',
+				options: [
+					{ name: 'No', value: 'no' },
+					{ name: 'Yes', value: 'yes' },
+				],
+				default: 'yes',
+				description: 'Send invoice by email',
+			},
 		],
-		default: 'yes',
+	},
+
+	// Additional Client Options
+	{
+		displayName: 'Additional Options',
+		name: 'additionalClientOptions',
+		type: 'collection',
+		placeholder: 'Add Option',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['client'],
-				operation: ['createClient'],
+				operation: ['createClient', 'updateClient'],
 			},
 		},
-		description: 'Send invoice by email',
-	},
-	{
-		displayName: 'Default Pay Due',
-		name: 'defaultPayDue',
-		type: 'options',
 		options: [
-			{ name: 'Now', value: 'now' },
-			{ name: '1 Day', value: '1' },
-			{ name: '7 Days', value: '7' },
-			{ name: '15 Days', value: '15' },
-			{ name: '30 Days', value: '30' },
-			{ name: '45 Days', value: '45' },
-			{ name: '60 Days', value: '60' },
-			{ name: '90 Days', value: '90' },
-		],
-		default: '15',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient'],
+			{
+				displayName: 'External Reference',
+				name: 'externalReference',
+				type: 'string',
+				default: '',
 			},
-		},
-		description: 'Default payment due period',
-	},
-	{
-		displayName: 'IRS Retention',
-		name: 'irsRetention',
-		type: 'options',
-		options: [
-			{ name: 'Yes', value: 'yes' },
-			{ name: 'No', value: 'no' },
-		],
-		default: 'no',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['createClient'],
+			{
+				displayName: 'Notes',
+				name: 'notes',
+				type: 'string',
+				default: '',
+				description: 'Notes about the client',
 			},
-		},
-		description: 'Whether client does IRS retention',
-	},
-	{
-		displayName: 'Status',
-		name: 'status',
-		type: 'options',
-		options: [
-			{ name: 'Active', value: 'active' },
-			{ name: 'Inactive', value: 'inactive' },
-		],
-		default: 'active',
-		displayOptions: {
-			show: {
-				resource: ['client'],
-				operation: ['updateClient'],
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [
+					{ name: 'Active', value: 'active' },
+					{ name: 'Inactive', value: 'inactive' },
+				],
+				default: 'active',
+				description: 'Client status',
+				displayOptions: {
+					show: {
+						'/operation': ['updateClient'],
+					},
+				},
 			},
-		},
-		description: 'Client status',
+		],
 	},
+
+	// Client Custom JSON
 	{
-		displayName: 'Client Custom JSON',
+		displayName: 'Custom JSON',
 		name: 'clientCustomJson',
 		type: 'json',
 		default: '{}',
@@ -1089,215 +1055,15 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['createClient', 'updateClient'],
 			},
 		},
-		description: 'Custom JSON payload to override default fields',
 	},
 
-	// Document operations
-	{
-		displayName: 'Document ID',
-		name: 'documentId',
-		type: 'string',
-		default: '',
-		required: true,
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['getDocumentById', 'updateDocument'],
-			},
-		},
-		description: 'The ID of the document',
-	},
-	{
-		displayName: 'Store ID',
-		name: 'storeId',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['getDocuments'],
-			},
-		},
-		description: 'Filter documents by store ID',
-	},
-	{
-		displayName: 'Register ID',
-		name: 'registerId',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['getDocuments', 'createDocument'],
-			},
-		},
-		description: 'POS ID',
-	},
-	{
-		displayName: 'Document Type',
-		name: 'type',
-		type: 'options',
-		options: [
-			{ name: 'Invoice', value: 'FT' },
-			{ name: 'Simplified Invoice', value: 'FS' },
-			{ name: 'Invoice Receipt', value: 'FR' },
-			{ name: 'Credit Note', value: 'NC' },
-			{ name: 'Table Consultation', value: 'DC' },
-			{ name: 'Pro-Forma Invoice', value: 'PF' },
-			{ name: 'Quote', value: 'OT' },
-			{ name: 'Order', value: 'EC' },
-			{ name: 'Asset Guide', value: 'GA' },
-			{ name: 'Transport Guide', value: 'GT' },
-			{ name: 'Shipment Guide', value: 'GR' },
-			{ name: 'Return Guide', value: 'GD' },
-			{ name: 'Receipt', value: 'RG' },
-		],
-		default: 'FT',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Type of document',
-	},
-	{
-		displayName: 'Date',
-		name: 'date',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Document date (YYYY-MM-DD). If not set, defaults to current date.',
-	},
-	{
-		displayName: 'Date Supply',
-		name: 'dateSupply',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Supply date (YYYY-MM-DD). If not set, defaults to current date.',
-	},
-	{
-		displayName: 'Date Due',
-		name: 'dateDue',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Payment due date (YYYY-MM-DD)',
-	},
-	{
-		displayName: 'Notes',
-		name: 'notes',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Document notes',
-	},
-	{
-		displayName: 'External Reference',
-		name: 'externalReference',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-	},
-	{
-		displayName: 'Stock Operation',
-		name: 'stockOperation',
-		type: 'options',
-		options: [
-			{ name: 'Increment Stock', value: 'in' },
-			{ name: 'Don\'t Change Stock', value: 'none' },
-			{ name: 'Decrement Stock', value: 'out' },
-		],
-		default: 'out',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Operation on items with stock control',
-	},
-	{
-		displayName: 'Output',
-		name: 'output',
-		type: 'options',
-		options: [
-			{ name: 'Auto', value: 'auto' },
-			{ name: 'PDF URL', value: 'pdf_url' },
-			{ name: 'PDF', value: 'pdf' },
-			{ name: 'HTML', value: 'html' },
-			{ name: 'ESC/POS', value: 'escpos' },
-			{ name: 'TPA SIBS', value: 'tpasibs' },
-		],
-		default: 'html',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Printable output format',
-	},
-	{
-		displayName: 'Document Status',
-		name: 'documentStatus',
-		type: 'options',
-		options: [
-			{ name: 'Normal', value: 'N' },
-			{ name: 'Canceled', value: 'A' },
-			{ name: 'Invoiced', value: 'F' },
-		],
-		default: 'N',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['updateDocument'],
-			},
-		},
-	},
-	{
-		displayName: 'Document Custom JSON',
-		name: 'documentCustomJson',
-		type: 'json',
-		default: '{}',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['createDocument'],
-			},
-		},
-		description: 'Custom JSON payload to override default fields',
-	},
+	// ================================
+	// PRODUCT OPERATIONS - FULLY OPTIMIZED
+	// ================================
 
-	// Product operations
+	// Required Fields for Product Operations
 	{
-		displayName: 'Product ID',
+		displayName: 'Product Name or ID',
 		name: 'productId',
 		type: 'string',
 		default: '',
@@ -1308,21 +1074,10 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['getProductById', 'updateProduct', 'deleteProduct', 'getProductStock'],
 			},
 		},
-		description: 'The ID of the product',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
-	{
-		displayName: 'Search Query',
-		name: 'q',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['getProducts'],
-			},
-		},
-		description: 'Search string for products',
-	},
+
+	// Required: Product Title
 	{
 		displayName: 'Product Title',
 		name: 'title',
@@ -1337,75 +1092,15 @@ export const vendusFields: INodeProperties[] = [
 		},
 		description: 'Product name',
 	},
+
+	// Required: Unit ID for Product Creation (with dynamic loading)
 	{
-		displayName: 'Reference',
-		name: 'reference',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
-			},
-		},
-		description: 'Product reference code',
-	},
-	{
-		displayName: 'Barcode',
-		name: 'barcode',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
-			},
-		},
-		description: 'Product barcode',
-	},
-	{
-		displayName: 'Description',
-		name: 'description',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
-			},
-		},
-		description: 'Product description',
-	},
-	{
-		displayName: 'Gross Price',
-		name: 'grossPrice',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
-			},
-		},
-		description: 'Product gross price',
-	},
-	{
-		displayName: 'Supply Price',
-		name: 'supplyPrice',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
-			},
-		},
-		description: 'Product supply price',
-	},
-	{
-		displayName: 'Unit ID',
+		displayName: 'Unit Name or ID',
 		name: 'unitId',
-		type: 'number',
+		type: 'options',
+		typeOptions: {
+			loadOptionsMethod: 'getProductUnits',
+		},
 		default: '',
 		required: true,
 		displayOptions: {
@@ -1414,154 +1109,263 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['createProduct'],
 			},
 		},
-		description: 'Product unit ID',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
+
+	// Product Search Options
 	{
-		displayName: 'Type ID',
-		name: 'typeId',
-		type: 'options',
+		displayName: 'Search Options',
+		name: 'productSearchOptions',
+		type: 'collection',
+		placeholder: 'Add Search Option',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['getProducts'],
+			},
+		},
 		options: [
-			{ name: 'Product', value: 'P' },
-			{ name: 'Service', value: 'S' },
-			{ name: 'Other', value: 'O' },
-			{ name: 'Tax', value: 'I' },
-			{ name: 'Special Consumption Tax', value: 'E' },
+			{
+				displayName: 'Search Query',
+				name: 'q',
+				type: 'string',
+				default: '',
+				description: 'Search string for products',
+			},
 		],
-		default: 'P',
+	},
+
+	// Product Basic Information
+	{
+		displayName: 'Basic Information',
+		name: 'basicInfo',
+		type: 'collection',
+		placeholder: 'Add Basic Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['product'],
 				operation: ['createProduct', 'updateProduct'],
 			},
 		},
-		description: 'Product type ID',
-	},
-	{
-		displayName: 'Class ID',
-		name: 'classId',
-		type: 'options',
 		options: [
-			{ name: 'Food', value: 'ALI' },
-			{ name: 'Alcohol and Tobacco', value: 'ALT' },
-			{ name: 'Cultural Products', value: 'CUL' },
-			{ name: 'Sports and Leisure', value: 'DEP' },
-			{ name: 'Home Appliances', value: 'EDM' },
-			{ name: 'Home Products', value: 'CAS' },
-			{ name: 'Computer and Electronics', value: 'PCS' },
-			{ name: 'Fashion and Accessories', value: 'MOD' },
-			{ name: 'Perfumery and Cosmetics', value: 'PER' },
-			{ name: 'Jewelry and Watches', value: 'JOI' },
+			{
+				displayName: 'Barcode',
+				name: 'barcode',
+				type: 'string',
+				default: '',
+				description: 'Product barcode',
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Product description',
+			},
+			{
+				displayName: 'Reference',
+				name: 'reference',
+				type: 'string',
+				default: '',
+				description: 'Product reference code',
+			},
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [
+					{ name: 'Active', value: 'on' },
+					{ name: 'Inactive', value: 'off' },
+				],
+				default: 'on',
+				description: 'Product status',
+			},
+			{
+				displayName: 'Type',
+				name: 'typeId',
+				type: 'options',
+				options: [
+					{ name: 'Other', value: 'O' },
+					{ name: 'Product', value: 'P' },
+					{ name: 'Service', value: 'S' },
+					{ name: 'Special Consumption Tax', value: 'E' },
+					{ name: 'Tax', value: 'I' },
+				],
+				default: 'P',
+				description: 'Product type',
+			},
 		],
-		default: 'ALI',
+	},
+
+	// Product Categorization (with dynamic loading)
+	{
+		displayName: 'Categorization',
+		name: 'categorization',
+		type: 'collection',
+		placeholder: 'Add Category Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['product'],
 				operation: ['createProduct', 'updateProduct'],
 			},
 		},
-		description: 'Product class ID',
-	},
-	{
-		displayName: 'Stock Control',
-		name: 'stockControl',
-		type: 'options',
 		options: [
-			{ name: 'No', value: 0 },
-			{ name: 'Yes', value: 1 },
+			{
+				displayName: 'Brand Name or ID',
+				name: 'brandId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getProductBrands',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Category Name or ID',
+				name: 'categoryId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getProductCategories',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Class',
+				name: 'classId',
+				type: 'options',
+				options: [
+					{ name: 'Alcohol and Tobacco', value: 'ALT' },
+					{ name: 'Computer and Electronics', value: 'PCS' },
+					{ name: 'Cultural Products', value: 'CUL' },
+					{ name: 'Fashion and Accessories', value: 'MOD' },
+					{ name: 'Food', value: 'ALI' },
+					{ name: 'Home Appliances', value: 'EDM' },
+					{ name: 'Home Products', value: 'CAS' },
+					{ name: 'Jewelry and Watches', value: 'JOI' },
+					{ name: 'Perfumery and Cosmetics', value: 'PER' },
+					{ name: 'Sports and Leisure', value: 'DEP' },
+				],
+				default: 'ALI',
+				description: 'Product class',
+			},
 		],
-		default: 1,
+	},
+
+	// Product Pricing
+	{
+		displayName: 'Pricing',
+		name: 'pricing',
+		type: 'collection',
+		placeholder: 'Add Price Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['product'],
 				operation: ['createProduct', 'updateProduct'],
 			},
 		},
-		description: 'Enable stock control',
-	},
-	{
-		displayName: 'Stock Type',
-		name: 'stockType',
-		type: 'options',
 		options: [
-			{ name: 'Merchandise', value: 'M' },
-			{ name: 'Raw Materials', value: 'P' },
-			{ name: 'Finished Products', value: 'A' },
-			{ name: 'By-Products', value: 'S' },
-			{ name: 'Work in Progress', value: 'T' },
+			{
+				displayName: 'Gross Price',
+				name: 'grossPrice',
+				type: 'string',
+				default: '',
+				description: 'Product gross price',
+			},
+			{
+				displayName: 'Supply Price',
+				name: 'supplyPrice',
+				type: 'string',
+				default: '',
+				description: 'Product supply price',
+			},
 		],
-		default: 'M',
+	},
+
+	// Product Stock Management
+	{
+		displayName: 'Stock Management',
+		name: 'stockManagement',
+		type: 'collection',
+		placeholder: 'Add Stock Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['product'],
 				operation: ['createProduct', 'updateProduct'],
 			},
 		},
-	},
-	{
-		displayName: 'Tax ID',
-		name: 'taxId',
-		type: 'options',
 		options: [
-			{ name: 'Normal Rate', value: 'NOR' },
-			{ name: 'Intermediate Rate', value: 'INT' },
-			{ name: 'Reduced Rate', value: 'RED' },
-			{ name: 'Exempt', value: 'ISE' },
-			{ name: 'Others', value: 'OUT' },
+			{
+				displayName: 'Stock Control',
+				name: 'stockControl',
+				type: 'options',
+				options: [
+					{ name: 'No', value: 0 },
+					{ name: 'Yes', value: 1 },
+				],
+				default: 1,
+				description: 'Enable stock control',
+			},
+			{
+				displayName: 'Stock Type',
+				name: 'stockType',
+				type: 'options',
+				options: [
+					{ name: 'By-Products', value: 'S' },
+					{ name: 'Finished Products', value: 'A' },
+					{ name: 'Merchandise', value: 'M' },
+					{ name: 'Raw Materials', value: 'P' },
+					{ name: 'Work in Progress', value: 'T' },
+				],
+				default: 'M',
+				displayOptions: {
+					show: {
+						'/stockManagement.stockControl': [1],
+					},
+				},
+			},
 		],
-		default: 'NOR',
+	},
+
+	// Product Tax Information
+	{
+		displayName: 'Tax Information',
+		name: 'taxInfo',
+		type: 'collection',
+		placeholder: 'Add Tax Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['product'],
 				operation: ['createProduct', 'updateProduct'],
 			},
 		},
-		description: 'Product tax ID',
-	},
-	{
-		displayName: 'Category ID',
-		name: 'categoryId',
-		type: 'number',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
-			},
-		},
-		description: 'Product category ID',
-	},
-	{
-		displayName: 'Brand ID',
-		name: 'brandId',
-		type: 'number',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
-			},
-		},
-		description: 'Product brand ID',
-	},
-	{
-		displayName: 'Status',
-		name: 'status',
-		type: 'options',
 		options: [
-			{ name: 'Active', value: 'on' },
-			{ name: 'Inactive', value: 'off' },
-		],
-		default: 'on',
-		displayOptions: {
-			show: {
-				resource: ['product'],
-				operation: ['createProduct', 'updateProduct'],
+			{
+				displayName: 'Tax Rate',
+				name: 'taxId',
+				type: 'options',
+				options: [
+					{ name: 'Exempt', value: 'ISE' },
+					{ name: 'Intermediate Rate', value: 'INT' },
+					{ name: 'Normal Rate', value: 'NOR' },
+					{ name: 'Others', value: 'OUT' },
+					{ name: 'Reduced Rate', value: 'RED' },
+				],
+				default: 'NOR',
+				description: 'Product tax rate',
 			},
-		},
-		description: 'Product status',
+		],
 	},
+
+	// Product Custom JSON
 	{
-		displayName: 'Product Custom JSON',
+		displayName: 'Custom JSON',
 		name: 'productCustomJson',
 		type: 'json',
 		default: '{}',
@@ -1571,12 +1375,223 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['createProduct', 'updateProduct'],
 			},
 		},
-		description: 'Custom JSON payload to override default fields',
 	},
 
-	// Receipt operations
+	// ================================
+	// DOCUMENT OPERATIONS - OPTIMIZED
+	// ================================
+
+	// Required Fields for Document Operations
 	{
-		displayName: 'Receipt ID',
+		displayName: 'Document Name or ID',
+		name: 'documentId',
+		type: 'string',
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['getDocumentById', 'updateDocument'],
+			},
+		},
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+	},
+
+	// Required: Document Type (with dynamic loading)
+	{
+		displayName: 'Document Type Name or ID',
+		name: 'type',
+		type: 'options',
+		typeOptions: {
+			loadOptionsMethod: 'getDocumentTypes',
+		},
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createDocument'],
+			},
+		},
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+	},
+
+	// Document Search and Filter Options
+	{
+		displayName: 'Search & Filter Options',
+		name: 'documentSearchOptions',
+		type: 'collection',
+		placeholder: 'Add Filter',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['getDocuments'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Register ID',
+				name: 'registerId',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Store Name or ID',
+				name: 'storeId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getStores',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+		],
+	},
+
+	// Document Basic Information
+	{
+		displayName: 'Document Information',
+		name: 'documentInfo',
+		type: 'collection',
+		placeholder: 'Add Document Info',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createDocument'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Date',
+				name: 'date',
+				type: 'string',
+				default: '',
+				placeholder: 'YYYY-MM-DD',
+				description: 'Document date (YYYY-MM-DD). If not set, defaults to current date.',
+			},
+			{
+				displayName: 'Date Due',
+				name: 'dateDue',
+				type: 'string',
+				default: '',
+				placeholder: 'YYYY-MM-DD',
+				description: 'Payment due date (YYYY-MM-DD)',
+			},
+			{
+				displayName: 'Date Supply',
+				name: 'dateSupply',
+				type: 'string',
+				default: '',
+				placeholder: 'YYYY-MM-DD',
+				description: 'Supply date (YYYY-MM-DD). If not set, defaults to current date.',
+			},
+			{
+				displayName: 'External Reference',
+				name: 'externalReference',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Notes',
+				name: 'notes',
+				type: 'string',
+				default: '',
+				description: 'Document notes',
+			},
+			{
+				displayName: 'Register ID',
+				name: 'registerId',
+				type: 'string',
+				default: '',
+			},
+		],
+	},
+
+	// Document Options
+	{
+		displayName: 'Document Options',
+		name: 'documentOptions',
+		type: 'collection',
+		placeholder: 'Add Option',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createDocument'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Output Format',
+				name: 'output',
+				type: 'options',
+				options: [
+					{ name: 'Auto', value: 'auto' },
+					{ name: 'ESC/POS', value: 'escpos' },
+					{ name: 'HTML', value: 'html' },
+					{ name: 'PDF', value: 'pdf' },
+					{ name: 'PDF URL', value: 'pdf_url' },
+					{ name: 'TPA SIBS', value: 'tpasibs' },
+				],
+				default: 'html',
+				description: 'Printable output format',
+			},
+			{
+				displayName: 'Stock Operation',
+				name: 'stockOperation',
+				type: 'options',
+				options: [
+					{ name: 'Decrement Stock', value: 'out' },
+					{ name: 'Don\'t Change Stock', value: 'none' },
+					{ name: 'Increment Stock', value: 'in' },
+				],
+				default: 'out',
+				description: 'Operation on items with stock control',
+			},
+		],
+	},
+
+	// Document Update Status
+	{
+		displayName: 'Document Status',
+		name: 'documentStatus',
+		type: 'options',
+		options: [
+			{ name: 'Canceled', value: 'A' },
+			{ name: 'Invoiced', value: 'F' },
+			{ name: 'Normal', value: 'N' },
+		],
+		default: 'N',
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['updateDocument'],
+			},
+		},
+	},
+
+	// Document Custom JSON
+	{
+		displayName: 'Custom JSON',
+		name: 'documentCustomJson',
+		type: 'json',
+		default: '{}',
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createDocument'],
+			},
+		},
+	},
+
+	// ================================
+	// RECEIPT OPERATIONS
+	// ================================
+
+	{
+		displayName: 'Receipt Name or ID',
 		name: 'receiptId',
 		type: 'string',
 		default: '',
@@ -1587,12 +1602,15 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['getReceiptById', 'updateReceipt'],
 			},
 		},
-		description: 'The ID of the receipt',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 
-	// Store operations
+	// ================================
+	// STORE OPERATIONS
+	// ================================
+
 	{
-		displayName: 'Store ID',
+		displayName: 'Store Name or ID',
 		name: 'storeId',
 		type: 'string',
 		default: '',
@@ -1603,12 +1621,16 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['getStoreById'],
 			},
 		},
-		description: 'The ID of the store',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 
-	// Supplier operations
+	// ================================
+	// SUPPLIER OPERATIONS - OPTIMIZED
+	// ================================
+
+	// Required Fields for Supplier Operations
 	{
-		displayName: 'Supplier ID',
+		displayName: 'Supplier Name or ID',
 		name: 'supplierId',
 		type: 'string',
 		default: '',
@@ -1619,8 +1641,10 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['getSupplierById', 'updateSupplier'],
 			},
 		},
-		description: 'The ID of the supplier',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
+
+	// Required: Supplier Name
 	{
 		displayName: 'Supplier Name',
 		name: 'supplierName',
@@ -1634,134 +1658,127 @@ export const vendusFields: INodeProperties[] = [
 			},
 		},
 	},
+
+	// Supplier Contact Information
 	{
-		displayName: 'Supplier Fiscal ID',
-		name: 'supplierFiscalId',
-		type: 'string',
-		default: '',
+		displayName: 'Contact Information',
+		name: 'supplierContactInfo',
+		type: 'collection',
+		placeholder: 'Add Contact Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['supplier'],
 				operation: ['createSupplier', 'updateSupplier'],
 			},
 		},
-	},
-	{
-		displayName: 'Supplier Address',
-		name: 'supplierAddress',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['supplier'],
-				operation: ['createSupplier', 'updateSupplier'],
-			},
-		},
-	},
-	{
-		displayName: 'Supplier Postal Code',
-		name: 'supplierPostalCode',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['supplier'],
-				operation: ['createSupplier', 'updateSupplier'],
-			},
-		},
-	},
-	{
-		displayName: 'Supplier City',
-		name: 'supplierCity',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['supplier'],
-				operation: ['createSupplier', 'updateSupplier'],
-			},
-		},
-	},
-	{
-		displayName: 'Supplier Phone',
-		name: 'supplierPhone',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['supplier'],
-				operation: ['createSupplier', 'updateSupplier'],
-			},
-		},
-	},
-	{
-		displayName: 'Supplier Mobile',
-		name: 'supplierMobile',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['supplier'],
-				operation: ['createSupplier', 'updateSupplier'],
-			},
-		},
-	},
-	{
-		displayName: 'Supplier Email',
-		name: 'supplierEmail',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['supplier'],
-				operation: ['createSupplier', 'updateSupplier'],
-			},
-		},
-	},
-	{
-		displayName: 'Supplier Website',
-		name: 'supplierWebsite',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['supplier'],
-				operation: ['createSupplier', 'updateSupplier'],
-			},
-		},
-	},
-	{
-		displayName: 'Supplier Country',
-		name: 'supplierCountry',
-		type: 'options',
 		options: [
-			{ name: 'Portugal', value: 'PT' },
-			{ name: 'Spain', value: 'ES' },
-			{ name: 'France', value: 'FR' },
-			{ name: 'Angola', value: 'AO' },
+			{
+				displayName: 'Email',
+				name: 'supplierEmail',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Fiscal ID',
+				name: 'supplierFiscalId',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Mobile',
+				name: 'supplierMobile',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Phone',
+				name: 'supplierPhone',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Website',
+				name: 'supplierWebsite',
+				type: 'string',
+				default: '',
+			},
 		],
-		default: 'PT',
+	},
+
+	// Supplier Address Information
+	{
+		displayName: 'Address Information',
+		name: 'supplierAddressInfo',
+		type: 'collection',
+		placeholder: 'Add Address Info',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['supplier'],
 				operation: ['createSupplier', 'updateSupplier'],
 			},
 		},
+		options: [
+			{
+				displayName: 'Address',
+				name: 'supplierAddress',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'City',
+				name: 'supplierCity',
+				type: 'string',
+				default: '',
+			},
+			{
+				displayName: 'Country',
+				name: 'supplierCountry',
+				type: 'options',
+				options: [
+					{ name: 'Angola', value: 'AO' },
+					{ name: 'France', value: 'FR' },
+					{ name: 'Portugal', value: 'PT' },
+					{ name: 'Spain', value: 'ES' },
+				],
+				default: 'PT',
+			},
+			{
+				displayName: 'Postal Code',
+				name: 'supplierPostalCode',
+				type: 'string',
+				default: '',
+			},
+		],
 	},
+
+	// Additional Supplier Options
 	{
-		displayName: 'Supplier Notes',
-		name: 'supplierNotes',
-		type: 'string',
-		default: '',
+		displayName: 'Additional Options',
+		name: 'supplierAdditionalOptions',
+		type: 'collection',
+		placeholder: 'Add Option',
+		default: {},
 		displayOptions: {
 			show: {
 				resource: ['supplier'],
 				operation: ['createSupplier', 'updateSupplier'],
 			},
 		},
+		options: [
+			{
+				displayName: 'Notes',
+				name: 'supplierNotes',
+				type: 'string',
+				default: '',
+			},
+		],
 	},
+
+	// Supplier Custom JSON
 	{
-		displayName: 'Supplier Custom JSON',
+		displayName: 'Custom JSON',
 		name: 'supplierCustomJson',
 		type: 'json',
 		default: '{}',
@@ -1771,6 +1788,7 @@ export const vendusFields: INodeProperties[] = [
 				operation: ['createSupplier', 'updateSupplier'],
 			},
 		},
-		description: 'Custom JSON payload to override default fields',
 	},
 ];
+
+

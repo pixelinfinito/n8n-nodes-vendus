@@ -19,7 +19,7 @@ export class VendusApi implements ICredentialType {
 				password: true,
 			},
 			required: true,
-			description: 'Your Vendus API key',
+			description: 'Your Vendus API key. This will be sent as a request parameter (api_key).',
 		},
 		{
 			displayName: 'Base URL',
@@ -32,11 +32,12 @@ export class VendusApi implements ICredentialType {
 
 	// This allows the credential to be used by other parts of n8n
 	// stating how this credential is injected as part of the request
+	// Using Request Parameter method: API key as query parameter
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-			headers: {
-				Authorization: '=Basic {{Buffer.from($credentials.apiKey + ":").toString("base64")}}',
+			qs: {
+				api_key: '={{$credentials.apiKey}}',
 			},
 		},
 	};
