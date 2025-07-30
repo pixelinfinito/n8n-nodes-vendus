@@ -1378,6 +1378,192 @@ export const vendusFields: INodeProperties[] = [
 	},
 
 	// ================================
+	// PRODUCT BRAND CREATION FIELDS
+	// ================================
+
+	// Required: Brand Name
+	{
+		displayName: 'Brand Name',
+		name: 'brandName',
+		type: 'string',
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['createProductBrand'],
+			},
+		},
+		description: 'Name of the product brand',
+	},
+
+	// Brand Additional Information
+	{
+		displayName: 'Brand Information',
+		name: 'brandInfo',
+		type: 'collection',
+		placeholder: 'Add Brand Info',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['createProductBrand'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Brand description',
+			},
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [
+					{ name: 'Active', value: 'active' },
+					{ name: 'Inactive', value: 'inactive' },
+				],
+				default: 'active',
+				description: 'Brand status',
+			},
+		],
+	},
+
+	// ================================
+	// PRODUCT CATEGORY CREATION FIELDS
+	// ================================
+
+	// Required: Category Name
+	{
+		displayName: 'Category Name',
+		name: 'categoryName',
+		type: 'string',
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['createProductCategory'],
+			},
+		},
+		description: 'Name of the product category',
+	},
+
+	// Category Additional Information
+	{
+		displayName: 'Category Information',
+		name: 'categoryInfo',
+		type: 'collection',
+		placeholder: 'Add Category Info',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['createProductCategory'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Category description',
+			},
+			{
+				displayName: 'Parent Category Name or ID',
+				name: 'parentId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getProductCategories',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [
+					{ name: 'Active', value: 'active' },
+					{ name: 'Inactive', value: 'inactive' },
+				],
+				default: 'active',
+				description: 'Category status',
+			},
+		],
+	},
+
+	// ================================
+	// PRODUCT STOCK UPDATE FIELDS
+	// ================================
+
+	// Product Stock Update Information
+	{
+		displayName: 'Stock Update Information',
+		name: 'stockUpdateInfo',
+		type: 'collection',
+		placeholder: 'Add Stock Info',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['product'],
+				operation: ['updateProductStock'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Product Name or ID',
+				name: 'productId',
+				type: 'string',
+				default: '',
+				required: true,
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Quantity',
+				name: 'quantity',
+				type: 'string',
+				default: '',
+				required: true,
+				description: 'Stock quantity to update',
+			},
+			{
+				displayName: 'Store Name or ID',
+				name: 'storeId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getStores',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Operation Type',
+				name: 'operationType',
+				type: 'options',
+				options: [
+					{ name: 'Add Stock', value: 'add' },
+					{ name: 'Remove Stock', value: 'remove' },
+					{ name: 'Set Stock', value: 'set' },
+				],
+				default: 'set',
+				description: 'Type of stock operation',
+			},
+			{
+				displayName: 'Notes',
+				name: 'notes',
+				type: 'string',
+				default: '',
+				description: 'Notes about the stock update',
+			},
+		],
+	},
+
+	// ================================
 	// DOCUMENT OPERATIONS - OPTIMIZED
 	// ================================
 
@@ -1449,6 +1635,24 @@ export const vendusFields: INodeProperties[] = [
 		],
 	},
 
+	// Required Client for Document Creation
+	{
+		displayName: 'Client Name or ID',
+		name: 'clientId',
+		type: 'options',
+		typeOptions: {
+			loadOptionsMethod: 'getClients',
+		},
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createDocument'],
+			},
+		},
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+	},
+
 	// Document Basic Information
 	{
 		displayName: 'Document Information',
@@ -1505,6 +1709,76 @@ export const vendusFields: INodeProperties[] = [
 				name: 'registerId',
 				type: 'string',
 				default: '',
+			},
+		],
+	},
+
+	// Document Items
+	{
+		displayName: 'Document Items',
+		name: 'items',
+		type: 'fixedCollection',
+		placeholder: 'Add Item',
+		default: {},
+		typeOptions: {
+			multipleValues: true,
+		},
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createDocument'],
+			},
+		},
+		options: [
+			{
+				name: 'itemsValues',
+				displayName: 'Item',
+				values: [
+					{
+						displayName: 'Product Name or ID',
+						name: 'productId',
+						type: 'string',
+						default: '',
+						required: true,
+						description: 'Product ID or reference',
+					},
+					{
+						displayName: 'Quantity',
+						name: 'quantity',
+						type: 'string',
+						default: '1',
+						required: true,
+						description: 'Quantity of the product',
+					},
+					{
+						displayName: 'Unit Price',
+						name: 'unitPrice',
+						type: 'string',
+						default: '',
+						description: 'Unit price of the product',
+					},
+					{
+						displayName: 'Discount',
+						name: 'discount',
+						type: 'string',
+						default: '0',
+						description: 'Discount percentage',
+					},
+					{
+						displayName: 'Tax Rate',
+						name: 'taxRate',
+						type: 'options',
+						options: [
+							{ name: 'Exempt', value: 'ISE' },
+							{ name: 'Intermediate Rate', value: 'INT' },
+							{ name: 'Normal Rate', value: 'NOR' },
+							{ name: 'Others', value: 'OUT' },
+							{ name: 'Reduced Rate', value: 'RED' },
+						],
+						default: 'NOR',
+						description: 'Tax rate for the item',
+					},
+				],
 			},
 		],
 	},
@@ -1587,6 +1861,98 @@ export const vendusFields: INodeProperties[] = [
 	},
 
 	// ================================
+	// PAYMENT METHOD CREATION FIELDS
+	// ================================
+
+	// Required: Payment Method Name
+	{
+		displayName: 'Payment Method Name',
+		name: 'paymentMethodName',
+		type: 'string',
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createPaymentMethod'],
+			},
+		},
+		description: 'Name of the payment method',
+	},
+
+	// Payment Method Information
+	{
+		displayName: 'Payment Method Information',
+		name: 'paymentMethodInfo',
+		type: 'collection',
+		placeholder: 'Add Payment Method Info',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createPaymentMethod'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Code',
+				name: 'code',
+				type: 'string',
+				default: '',
+				description: 'Payment method code',
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Payment method description',
+			},
+			{
+				displayName: 'Type',
+				name: 'type',
+				type: 'options',
+				options: [
+					{ name: 'Cash', value: 'cash' },
+					{ name: 'Credit Card', value: 'credit_card' },
+					{ name: 'Debit Card', value: 'debit_card' },
+					{ name: 'Bank Transfer', value: 'bank_transfer' },
+					{ name: 'Check', value: 'check' },
+					{ name: 'Digital Wallet', value: 'digital_wallet' },
+					{ name: 'Other', value: 'other' },
+				],
+				default: 'cash',
+				description: 'Type of payment method',
+			},
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [
+					{ name: 'Active', value: 'active' },
+					{ name: 'Inactive', value: 'inactive' },
+				],
+				default: 'active',
+				description: 'Payment method status',
+			},
+		],
+	},
+
+	// Payment Method Custom JSON
+	{
+		displayName: 'Custom JSON',
+		name: 'paymentMethodCustomJson',
+		type: 'json',
+		default: '{}',
+		displayOptions: {
+			show: {
+				resource: ['document'],
+				operation: ['createPaymentMethod'],
+			},
+		},
+	},
+
+	// ================================
 	// RECEIPT OPERATIONS
 	// ================================
 
@@ -1603,6 +1969,131 @@ export const vendusFields: INodeProperties[] = [
 			},
 		},
 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+	},
+
+	// Required: Receipt Information for Creation
+	{
+		displayName: 'Receipt Information',
+		name: 'receiptInfo',
+		type: 'collection',
+		placeholder: 'Add Receipt Info',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['receipt'],
+				operation: ['createReceipt'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Amount',
+				name: 'amount',
+				type: 'string',
+				default: '',
+				required: true,
+				description: 'Receipt amount',
+			},
+			{
+				displayName: 'Client Name or ID',
+				name: 'clientId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getClients',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+			{
+				displayName: 'Date',
+				name: 'date',
+				type: 'string',
+				default: '',
+				placeholder: 'YYYY-MM-DD',
+				description: 'Receipt date (YYYY-MM-DD). If not set, defaults to current date.',
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Receipt description',
+			},
+			{
+				displayName: 'Payment Method Name or ID',
+				name: 'paymentMethodId',
+				type: 'options',
+				typeOptions: {
+					loadOptionsMethod: 'getPaymentMethods',
+				},
+				default: '',
+				description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+			},
+		],
+	},
+
+	// Receipt Update Fields
+	{
+		displayName: 'Update Fields',
+		name: 'receiptUpdateFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: ['receipt'],
+				operation: ['updateReceipt'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Amount',
+				name: 'amount',
+				type: 'string',
+				default: '',
+				description: 'Receipt amount',
+			},
+			{
+				displayName: 'Date',
+				name: 'date',
+				type: 'string',
+				default: '',
+				placeholder: 'YYYY-MM-DD',
+				description: 'Receipt date (YYYY-MM-DD)',
+			},
+			{
+				displayName: 'Description',
+				name: 'description',
+				type: 'string',
+				default: '',
+				description: 'Receipt description',
+			},
+			{
+				displayName: 'Status',
+				name: 'status',
+				type: 'options',
+				options: [
+					{ name: 'Active', value: 'active' },
+					{ name: 'Canceled', value: 'canceled' },
+					{ name: 'Paid', value: 'paid' },
+				],
+				default: 'active',
+				description: 'Receipt status',
+			},
+		],
+	},
+
+	// Receipt Custom JSON
+	{
+		displayName: 'Custom JSON',
+		name: 'receiptCustomJson',
+		type: 'json',
+		default: '{}',
+		displayOptions: {
+			show: {
+				resource: ['receipt'],
+				operation: ['createReceipt', 'updateReceipt'],
+			},
+		},
 	},
 
 	// ================================
